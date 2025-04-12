@@ -1,6 +1,10 @@
 {
-  "name": "youtube-upload-function",
+  "name": "automacao_youtube",
   "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "description": "Vercel function to upload videos to YouTube",
   "main": "index.js",
   "scripts": {
