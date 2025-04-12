@@ -1,0 +1,17 @@
+name: Scheduled YouTube Upload
+
+on:
+  schedule:
+    # Executar a cada 1h30 entre 7h e 22h no Brasil (ajustado para UTC)
+    - cron: '30 10,12,13,15,16,18,19,21,22,0,1 * * *'
+  workflow_dispatch: # Permite executar manualmente também pela interface do GitHub
+
+jobs:
+  upload-video:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Process YouTube Upload Queue
+        run: |
+          curl -X POST ${{ secrets.VERCEL_API_URL }} \
+            -H "Content-Type: application/json" \
+            -d '{"account":"miu09622"}' 
