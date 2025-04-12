@@ -1,0 +1,20 @@
+{
+  "name": "youtube-upload-function",
+  "version": "1.0.0",
+  "description": "Vercel function to upload videos to YouTube",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "airtable": "^0.12.2",
+    "dotenv": "^16.5.0",
+    "formidable": "^3.5.1",
+    "googleapis": "^128.0.0",
+    "node-fetch": "^2.7.0",
+    "opener": "^1.5.2"
+  },
+  "devDependencies": {
+    "vercel": "^33.2.0"
+  }
+}
