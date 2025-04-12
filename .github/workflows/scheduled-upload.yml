@@ -11,7 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Process YouTube Upload Queue
+        env:
+          API_URL: ${{ secrets.VERCEL_API_URL }}
         run: |
-          curl -X POST ${{ secrets.VERCEL_API_URL }} \
+          echo "Enviando requisição para: ${API_URL}"
+          echo "Horário atual: $(date)"
+          
+          # Fazer requisição com logs detalhados
+          curl -v -X POST ${API_URL} \
             -H "Content-Type: application/json" \
-            -d '{"account":"miu09622"}' 
+            -d '{"account":"miu09622"}'
+          
+          echo "Requisição concluída" 
