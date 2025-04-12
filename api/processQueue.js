@@ -1,12 +1,12 @@
 // Carregar variáveis de ambiente do arquivo .env
-require('dotenv').config();
+import 'dotenv/config';
 
-const { google } = require('googleapis');
-const { getYouTubeAuthClient, getDriveAuthClient } = require('./auth');
-const Airtable = require('airtable');
-const fs = require('fs');
-const path = require('path');
-const os = require('os');
+import { google } from 'googleapis';
+import { getYouTubeAuthClient, getDriveAuthClient } from './auth.js';
+import Airtable from 'airtable';
+import fs from 'fs';
+import path from 'path';
+import os from 'os';
 
 // Configuração do Airtable
 const airtableBase = new Airtable({

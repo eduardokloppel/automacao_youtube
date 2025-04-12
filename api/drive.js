@@ -1,5 +1,6 @@
-const { google } = require('googleapis');
-const { getDriveAuthClient } = require('./auth');
+// Convertendo imports para ES Modules
+import { google } from 'googleapis';
+import { getDriveAuthClient } from './auth.js';
 
 /**
  * Lista arquivos de vídeo em uma pasta específica do Google Drive
@@ -52,16 +53,14 @@ async function getDriveFileDownloadUrl(fileId) {
   }
 }
 
-/**
- * Handler para endpoint de API Vercel que lista vídeos do Drive
- */
-module.exports = async (req, res) => {
-  // CORS headers
+// Convertendo para ES Modules
+export default async function handler(req, res) {
+  // Configuração de CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   
-  // Handle OPTIONS (preflight) request
+  // Tratamento para requisições OPTIONS (preflight)
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
@@ -85,4 +84,4 @@ module.exports = async (req, res) => {
       details: error.message
     });
   }
-}; 
+} 

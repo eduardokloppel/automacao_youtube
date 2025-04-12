@@ -1,10 +1,10 @@
-const { google } = require('googleapis');
-const { getYouTubeAuthClient, getDriveAuthClient } = require('./auth');
-const Airtable = require('airtable');
-const fetch = require('node-fetch');
-const fs = require('fs');
-const path = require('path');
-const os = require('os');
+import { google } from 'googleapis';
+import { getYouTubeAuthClient, getDriveAuthClient } from './auth.js';
+import Airtable from 'airtable';
+import fetch from 'node-fetch';
+import fs from 'fs';
+import path from 'path';
+import os from 'os';
 
 // Configuração do Airtable
 const airtableBase = new Airtable({
@@ -193,13 +193,13 @@ async function processVideo(video) {
 /**
  * Handler para API Vercel
  */
-module.exports = async (req, res) => {
-  // CORS headers
+export default async function handler(req, res) {
+  // Configuração de CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   
-  // Handle OPTIONS (preflight) request
+  // Tratamento para requisições OPTIONS (preflight)
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
@@ -248,4 +248,4 @@ module.exports = async (req, res) => {
       details: error.message
     });
   }
-}; 
+} 

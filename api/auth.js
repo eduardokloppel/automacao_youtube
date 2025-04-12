@@ -1,4 +1,4 @@
-const { google } = require('googleapis');
+import { google } from 'googleapis';
 
 // Configuração das credenciais OAuth2
 const GOOGLE_CLIENT_ID_DEFAULT = process.env.GOOGLE_CLIENT_ID;
@@ -107,8 +107,9 @@ function getAvailableYouTubeAccounts() {
   return Object.keys(YOUTUBE_TOKENS);
 }
 
-module.exports = {
+// Convertendo para ES Modules
+export {
   getYouTubeAuthClient,
   getDriveAuthClient,
   getAvailableYouTubeAccounts
-}; 
+} 
