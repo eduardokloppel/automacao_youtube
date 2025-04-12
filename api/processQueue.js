@@ -283,9 +283,10 @@ Descrição: ${videoDescription}`);
 }
 
 /**
- * Handler para API Vercel
+ * Handler da API Vercel
  */
-module.exports = async (req, res) => {
+// Formato correto para Vercel Functions
+export default async function handler(req, res) {
   // Configuração de CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -341,4 +342,4 @@ module.exports = async (req, res) => {
       message: 'Método não permitido'
     });
   }
-}; 
+} 
